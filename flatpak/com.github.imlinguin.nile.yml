@@ -1,0 +1,20 @@
+app-id: com.github.imlinguin.nile
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+command: nile
+
+finish-args:
+  - --share=network
+  - --filesystem=home
+
+modules:
+  - name: nile
+    buildsystem: simple
+    build-options:
+      build-args: ['--share=network']
+    build-commands:
+      - install -Dm755 bin/nile /app/bin/nile
+    sources:
+      - type: dir
+        path: ../
